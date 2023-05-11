@@ -5,10 +5,10 @@ arg_size = len(argv)
 
 if __name__ == "__main__":
     if arg_size == 1:
-        print("0 argument.")
+        print("{} argument.".format(0))
     else:
         if arg_size == 2:
-            print("1 argument:")
+            print("{} argument:".format(1))
         else:
             print("{} arguments:".format(arg_size - 1))
 
