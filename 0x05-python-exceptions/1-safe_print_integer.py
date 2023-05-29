@@ -7,8 +7,3 @@ def safe_print_integer(value):
     except ValueError:
         correct_print = False
     return correct_print
-
-
-if __name__ == "__main__":
-    print(safe_print_integer("89"))
-    print(safe_print_integer(89))
