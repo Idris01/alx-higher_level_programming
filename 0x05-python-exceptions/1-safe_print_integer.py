@@ -4,6 +4,12 @@ def safe_print_integer(value):
 
     try:
         print("{:d}".format(value))
-    except ValueError:
+    except (TypeError, ValueError):
         correct_print = False
     return correct_print
+
+
+if __name__ == "__main__":
+    print(safe_print_integer("ade"))
+    print(safe_print_integer(None))
+    print(safe_print_integer(-89))
