@@ -49,8 +49,6 @@ class Square:
 
     def my_print(self):
         "Prints a square shape using # symbol"
-        if self.position[1] > 0:
-            print()
         for i in range(self.size):
             print("{}{}".format(" " * self.position[0], "#" * self.size))
         else:
