@@ -16,7 +16,7 @@ class Square:
     def __init__(self, size=0, position=(0, 0)):
         try:
             point_1, point_2 = position
-            if type(point_1) != int and type(point_2) != int:
+            if type(point_1) != int or type(point_2) != int:
                 raise TypeError
             if point_1 < 0 or point_2 < 0:
                 raise TypeError
