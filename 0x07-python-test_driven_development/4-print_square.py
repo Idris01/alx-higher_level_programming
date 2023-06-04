@@ -2,12 +2,13 @@
 """Define a print_square function that prints square using # symbol
 """
 
+
 def print_square(size):
     '''Prints a square of size using # symbol
-    
+
     Args:
         size (int): size of the square
-    
+
     Returns:
         Nothing
     '''
@@ -21,4 +22,3 @@ def print_square(size):
 
     for row in range(int(size)):
         print("{}".format("#" * int(size)))
-
