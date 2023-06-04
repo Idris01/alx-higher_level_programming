@@ -1,0 +1,60 @@
+Tests for 0-add_integer.py
+
+Test integer values
+====================
+
+::
+	>>> add_integer = __import__('0-add_integer').add_integer
+	>>> add_integer(4, 5)
+	9
+
+Test float values
+=================
+::
+	>>> add_integer(4.5, 8)
+	12
+
+Test string input
+=================
+
+::
+	>>> add_integer("s", 5)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	>>> add_integer(4.2, "5")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+Test No value supplied
+======================
+
+::
+	>>> add_integer()
+	Traceback (most recent call last):
+		...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Test None as argument
+=====================
+
+::	
+	>>> add_integer(None, None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+Test List and dictionary
+========================
+::
+	>>> add_integer([])
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	
+	>>> add_integer(5, {})
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+

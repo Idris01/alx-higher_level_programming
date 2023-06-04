@@ -1,0 +1,86 @@
+Test for 2-matrix_divided.py module
+
+Test Correct type and size
+==========================
+
+::
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+	>>> matrix = [[2, 3, 4], [2, 6, 8]]
+	>>> matrix_2 = [[2, -5.9], [4, 9], [1, 1]]
+	>>> matrix_divided(matrix, 2) # doctest: +NORMALIZE_WHITESPACE
+	[[1.00, 1.50, 2.00],
+	[1.00, 3.00, 4.44]]
+	>>> matrix_divided(matrix_2, 3) # doctest: +NORMALIZE_WHITESPACE
+	[
+		[0.67, -1.97],
+		[1.33, 3],
+		[0.33, 0.33]
+	]
+
+Test List of List
+=================
+
+::
+	>>> matrix = [2, [2, 3, 4], [2, 6, 8]]
+	>>> matrix_divided(matrix, 2)
+	Traceback (most recent call last)
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test Matrix size
+================
+
+::
+	>>> matrix = [[1], [2, 3, 4], [2, 6, 8]]
+	>>> matrix_divided(matrix, 2)
+	Traceback (most recent call last)
+		...
+	TypeError: Each row of the matrix must have the same size
+
+Test Matrix type
+=================
+
+::
+	>>> matrix = [[, None, ''], [2, 3, 4], [2, 6, 8]]
+	>>> matrix_divided(matrix, 2)
+	Traceback (most recent call last)
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test matrix as string
+=====================
+
+::
+	>>> matrix_divided('', 2)
+	Traceback (most recent call last)
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test matrix as single list
+==========================
+
+::
+	>>> matrix_divided([], 2)
+	Traceback (most recent call last)
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Test div as neither integer nor float
+=====================================
+
+::
+	>>> matrix = [[1, 2, 4]]
+	>>> matrix_divided(matrix, '5')
+	Traceback (most recent call last)
+		...
+	TypeError: div must be a number
+
+Test div as zero
+================
+
+::
+	>>> matrix = [[1, 2]]
+	>>> matrix_divided(matrix, 0)
+	Traceback (most recent call last)
+		...
+	ZeroDivisionError: division by zero
