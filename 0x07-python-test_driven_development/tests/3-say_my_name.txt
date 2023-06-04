@@ -1,0 +1,46 @@
+Test definitions for "3-say_my_name.py" module
+
+Test first and last name as string
+=================================
+
+::
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+	>>> say_my_name("Idris", "Adebowale")
+	My name is Idris Adebowale
+	>>> say_my_name("Idris")
+	My name is Idris 
+
+Test empty string as first name
+===============================
+
+::
+	>>> say_my_name('')
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+Test first name as non string
+=============================
+
+::
+	>>> say_my_name(12, "Adeyemi")
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+Test last name as non string
+============================
+
+::
+	>>> say_my_name("Idris", [])
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string
+
+Test space before and after name
+================================
+
+::
+	>>> say_my_name("   Idris  ", "Adeyemi  ")
+	My name is Idris Adeyemi
+	
