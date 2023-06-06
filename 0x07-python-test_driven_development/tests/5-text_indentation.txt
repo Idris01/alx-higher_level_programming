@@ -1,0 +1,23 @@
+#### Tests for text_indentation module ####
+
+Test string as  text
+====================
+
+::
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+	>>> text = "I love. Islam? software"
+	>>> text_indentation(text)
+	I love.
+	<BLANKLINE>
+	Islam?
+	<BLANKLINE>
+	software
+
+Test non string as text
+=======================
+
+::
+	>>> text_indentation(5)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
