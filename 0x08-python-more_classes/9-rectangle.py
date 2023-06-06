@@ -127,4 +127,5 @@ class Rectangle:
             Returns:
                 new Rectangle with equal width and height
             '''
-            return Rectangle(size, size)
+            rec = Rectangle(size, size)
+            return rec
