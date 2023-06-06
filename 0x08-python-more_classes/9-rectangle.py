@@ -118,14 +118,14 @@ class Rectangle:
         else:
             return rect_2
 
-        @classmethod
-        def square(cls, size=0):
-            '''Creates a square of size
+    @classmethod
+    def square(cls, size=0):
+        '''Creates a square of size
+
             Args:
                 size (int): size of square
 
             Returns:
                 new Rectangle with equal width and height
-            '''
-            rec = Rectangle(size, size)
-            return rec
+        '''
+        return cls(size, size)
