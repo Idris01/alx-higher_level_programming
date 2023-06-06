@@ -94,3 +94,37 @@ class Rectangle:
     def __del__(self):
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        '''Finds  the Rectangle with bigger area between twp rectangles
+
+        Args:
+            rect_1 (Rectangle): first rectangle
+            rect_2 (Rectangle): second rectangle
+        Returns:
+            rect_1 if larger or equal to rect_2 otherwise rect_2
+
+        Raises:
+            TypeError: if either rect_1 or rect_2 is not Rectangle
+
+        '''
+        if type(rect_1) != Rectangle:
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if type(rect_2) != Rectangle:
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        else:
+            return rect_2
+
+        @classmethod
+        def square(cls, size=0):
+            '''Creates a square of size
+            Args:
+                size (int): size of square
+
+            Returns:
+                new Rectangle with equal width and height
+            '''
+            return Rectangle(size, size)
