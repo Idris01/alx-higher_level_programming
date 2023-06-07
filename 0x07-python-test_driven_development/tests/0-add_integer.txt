@@ -58,3 +58,9 @@ Test List and dictionary
 		...
 	TypeError: b must be an integer
 
+Test only one argument
+======================
+
+::
+	>>> add_integer(4)
+	102
