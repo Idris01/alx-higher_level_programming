@@ -19,10 +19,10 @@
 		...
 	TypeError: ... missing 2 required positional arguments: ...
 
-	>>> geometry.integer_validator("idris", "5") # doctest: +ELLIPSIS
+	>>> geometry.integer_validator("idris", "5")
 	Traceback (most recent call last):
 		...
-	TypeError: ... must be an integer
+	TypeError: value must be an integer
 
 	>>> geometry.integer_validator("square", 5, 7) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
 	Traceback (most recent call last):
@@ -34,13 +34,13 @@
 		...
 	TypeError: ... missing 1 required positional argument: ...
 
-	>>> geometry.integer_validator("square", 0) # doctest: +ELLIPSIS 
+	>>> geometry.integer_validator("square", 0)
 	Traceback (most recent call last):
 		...
-	ValueError: ... must be greater than 0
+	ValueError: value must be greater than 0
 
-	>>> geometry.integer_validator("rectangle", -1) # doctest: +ELLIPSIS
+	>>> geometry.integer_validator("rectangle", -1)
 	Traceback (most recent call last):
 		...
-	ValueError: ... must be greater than 0
+	ValueError: value must be greater than 0
 
