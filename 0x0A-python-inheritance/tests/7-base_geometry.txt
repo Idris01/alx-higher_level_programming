@@ -22,7 +22,7 @@
 	>>> geometry.integer_validator("idris", "5")
 	Traceback (most recent call last):
 		...
-	TypeError: value must be an integer
+	TypeError: idris must be an integer
 
 	>>> geometry.integer_validator("square", 5, 7) # doctest: +ELLIPSIS
 	Traceback (most recent call last):
@@ -37,10 +37,10 @@
 	>>> geometry.integer_validator("square", 0)
 	Traceback (most recent call last):
 		...
-	ValueError: value must be greater than 0
+	ValueError: square must be greater than 0
 
 	>>> geometry.integer_validator("rectangle", -1)
 	Traceback (most recent call last):
 		...
-	ValueError: value must be greater than 0
+	ValueError: rectangle must be greater than 0
 
