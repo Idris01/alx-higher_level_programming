@@ -8,31 +8,31 @@
 		...
 	Exception: area() is not implemented
 	
-	>>> geometry.area(5) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+	>>> geometry.area(5) # doctest:
 	Traceback (most recent call last):
 		...
-	TypeError: ... takes 1 positional argument ...
+	TypeError: area() takes 1 positional argument but 2 were given
 	
 	>>> geometry.integer_validator("idris", 5)
-	>>> geometry.integer_validator() # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+	>>> geometry.integer_validator()
 	Traceback (most recent call last):
 		...
-	TypeError: ... missing 2 required positional arguments: ...
+	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 	>>> geometry.integer_validator("idris", "5")
 	Traceback (most recent call last):
 		...
 	TypeError: value must be an integer
 
-	>>> geometry.integer_validator("square", 5, 7) # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+	>>> geometry.integer_validator("square", 5, 7) # doctest: +ELLIPSIS
 	Traceback (most recent call last):
 		...
-	TypeError: ... takes 3 positional arguments ...
+	TypeError: integer_validator() takes 3 positional arguments but ... were given
 
-	>>> geometry.integer_validator("idris") # doctest: +ELLIPSIS +NORMALIZE_WHITESPACE
+	>>> geometry.integer_validator("idris")
 	Traceback (most recent call last):
 		...
-	TypeError: ... missing 1 required positional argument: ...
+	TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 	>>> geometry.integer_validator("square", 0)
 	Traceback (most recent call last):
