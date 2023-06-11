@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""The 'is_same_class(obj, a_class)' function module
+"""
 
 
 def is_same_class(obj, a_class):
