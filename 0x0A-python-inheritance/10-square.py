@@ -30,3 +30,8 @@ class Square(Rectangle):
     def __init__(self, size):
         Rectangle.__init__(self, size, size)
         self.__size = size
+
+    def area(self):
+        """Return area of square
+        """
+        return self.__size * self.__size
