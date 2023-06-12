@@ -15,5 +15,5 @@ def add_attribute(cls, name, value):
         TypeError: if attribute not added
     """
     cls.__dict__.__setitem__(name, value)
-    if cls.__dict__.get(name, None) is not value:
+    if cls.__dict__.get(name, None) != value:
         raise TypeError("can't add new attribute")
