@@ -14,6 +14,9 @@ def add_attribute(cls, name, value):
     Raise:
         TypeError: if attribute not added
     """
+    if '__dict__' not in dir(cls):
+        raise TypeError("can't add new attribute")
+
     cls.__dict__.__setitem__(name, value)
     if cls.__dict__.get(name, None) != value:
         raise TypeError("can't add new attribute")
