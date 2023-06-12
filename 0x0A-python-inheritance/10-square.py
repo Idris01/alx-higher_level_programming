@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" Square Module
+""" This module defines a python class Square
 """
 
 Rectangle = __import__('9-rectangle').Rectangle
 
 
 class Square(Rectangle):
-    """Represents a rectangle of size "size"
+    """Represents a Square of size "size"
 
     Args:
         size (int): size of the square
