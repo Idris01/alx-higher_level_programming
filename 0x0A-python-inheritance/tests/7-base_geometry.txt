@@ -7,7 +7,12 @@
 	Traceback (most recent call last):
 		...
 	Exception: area() is not implemented
-	
+
+	>>> geometry.area(5, 4) # doctest:
+	Traceback (most recent call last):
+		...
+	TypeError: area() takes 1 positional argument but 3 were given
+
 	>>> geometry.area(5) # doctest:
 	Traceback (most recent call last):
 		...
@@ -24,10 +29,10 @@
 		...
 	TypeError: idris must be an integer
 
-	>>> geometry.integer_validator("square", 5, 7) # doctest: +ELLIPSIS
+	>>> geometry.integer_validator("square", 5, 7)
 	Traceback (most recent call last):
 		...
-	TypeError: integer_validator() takes 3 positional arguments but ... were given
+	TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
 	>>> geometry.integer_validator("idris")
 	Traceback (most recent call last):
