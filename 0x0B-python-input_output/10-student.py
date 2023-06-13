@@ -23,8 +23,7 @@ class Student:
     def to_json(self, attrs=None):
         """Retrive the dictionary of attrs of student
         """
-        if (attrs and type(attrs) == list and
-                all([type(attr) == str for attr in attrs])):
+        if (attrs and type(attrs) == list):
             return {key: self.__dict__[key] for key in attrs if
                     key in self.__dict__}
         return self.__dict__
