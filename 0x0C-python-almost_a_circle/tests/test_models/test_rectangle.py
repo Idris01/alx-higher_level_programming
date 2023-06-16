@@ -87,3 +87,94 @@ class RectangleTest(TestCase):
         self.assertEqual(rect.id, 220)
         self.assertEqual(rect.x, 3)
         self.assertEqual(rect.y, 4)
+
+    def test_width_must_be_integer(self):
+        """Test that rectangle raises exception if width is not integer
+        """
+
+        with self.assertRaises(TypeError) as error:
+            Rectangle("5", 3)
+        self.assertEqual('width must be an integer', str(error.exception))
+
+        rect = Rectangle(5, 3)
+        with self.assertRaises(TypeError) as error_2:
+            rect.width = "5"
+        self.assertEqual('width must be an integer', str(error_2.exception))
+
+    def test_height_must_be_integer(self):
+        """Test that rectangle raises exception if height is not integer
+        """
+
+        with self.assertRaises(TypeError) as error:
+            Rectangle(5, "3")
+        self.assertEqual('height must be an integer', str(error.exception))
+
+        rect = Rectangle(5, 3)
+        with self.assertRaises(TypeError) as error_2:
+            rect.height = "5"
+        self.assertEqual('height must be an integer', str(error_2.exception))
+
+    def test_width_is_greater_than_zero(self):
+        """Test that rectangle raises exception if width <= 0
+        """
+
+        with self.assertRaises(ValueError) as error:
+            Rectangle(-1, 3)
+        self.assertEqual('width must be > 0', str(error.exception))
+
+        rect = Rectangle(5, 3)
+        with self.assertRaises(ValueError) as error_2:
+            rect.width = 0
+        self.assertEqual('width must be > 0', str(error_2.exception))
+
+    def test_height_is_greater_than_zero(self):
+        """Test that rectangle raises exception if height <= 0
+        """
+
+        with self.assertRaises(ValueError) as error:
+            Rectangle(6, -2)
+        self.assertEqual('height must be > 0', str(error.exception))
+
+        rect = Rectangle(5, 3)
+        with self.assertRaises(ValueError) as error_2:
+            rect.height = 0
+        self.assertEqual('height must be > 0', str(error_2.exception))
+
+    def test_x_and_y_is_integer(self):
+        """Test that setting x or y as non integer raises Exception
+        """
+        with self.assertRaises(TypeError) as error:
+            Rectangle(5, 2, "4", 4)
+        self.assertEqual('x must be an integer', str(error.exception))
+        with self.assertRaises(TypeError) as error:
+            Rectangle(5, 2, 4, "4")
+        self.assertEqual('y must be an integer', str(error.exception))
+
+        rect = Rectangle(5, 2)
+        with self.assertRaises(TypeError) as error:
+            rect.y = "4"
+        self.assertEqual('y must be an integer', str(error.exception))
+
+        with self.assertRaises(TypeError) as error:
+            rect.x = 0.5
+        self.assertEqual('x must be an integer', str(error.exception))
+
+    def test_x_and_y_greater_or_equal_zero(self):
+        """Test that exception raised for value of x or y below 0
+        """
+
+        with self.assertRaises(ValueError) as error:
+            Rectangle(5, 2, -1, 4)
+        self.assertEqual('x must be >= 0', str(error.exception))
+        with self.assertRaises(ValueError) as error:
+            Rectangle(5, 2, 4, -1)
+        self.assertEqual('y must be >= 0', str(error.exception))
+
+        rect = Rectangle(5, 2)
+        with self.assertRaises(ValueError) as error:
+            rect.y = -10
+        self.assertEqual('y must be >= 0', str(error.exception))
+
+        with self.assertRaises(ValueError) as error:
+            rect.x = -9
+        self.assertEqual('x must be >= 0', str(error.exception))
