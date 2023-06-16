@@ -178,3 +178,18 @@ class RectangleTest(TestCase):
         with self.assertRaises(ValueError) as error:
             rect.x = -9
         self.assertEqual('x must be >= 0', str(error.exception))
+
+    def test_area_5_by_6_is_30(self):
+        """Test that area of a rectangle returns expected result
+        """
+
+        rect = Rectangle(5, 6)
+        self.assertEqual(rect.area(), 30)
+
+    def test_area_with_parameter_raises_exception(self):
+        """Test that area does'nt require any argument
+        """
+
+        rect = Rectangle(4, 5)
+        with self.assertRaises(TypeError):
+            rect.area(3)
