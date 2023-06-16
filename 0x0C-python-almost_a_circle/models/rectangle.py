@@ -101,3 +101,18 @@ class Rectangle(Base):
         """Return the area of rectangle
         """
         return self.width * self.height
+
+    def display(self):
+        """Prints the representation of rectangle using '#' symbol
+        """
+        if self.y > 0:
+            print('\n' * self.y, end='')
+        shape = '\n'.join(
+                [((' ' * self.x) + ('#' * self.width))
+                    for i in range(self.height)]
+                )
+        print(shape)
+
+    def __str__(self):
+        return '[Rectangle] ({}) {}/{} - {}/{}'.format(
+                self.id, self.x, self.y, self.width, self.height)

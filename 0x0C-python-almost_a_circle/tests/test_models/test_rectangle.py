@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """This module define tests for rectangle module
 """
-
+import io
+import unittest.mock as mock
 from unittest import TestCase
 from models.rectangle import Rectangle
 
@@ -193,3 +194,38 @@ class RectangleTest(TestCase):
         rect = Rectangle(4, 5)
         with self.assertRaises(TypeError):
             rect.area(3)
+
+    def test_rectangle_display(self):
+        """Test that the rectangle is printed out with # symbol
+        """
+
+        rect1 = Rectangle(2, 3, 0, 0)
+        with mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+            rect1.display()
+            self.assertEqual(mock_stdout.getvalue(), '##\n##\n##\n')
+
+    def test_rectangle_display_with_coordinate(self):
+        """Test that the rectangle is printed out with # symbol
+        """
+
+        rect1 = Rectangle(2, 3, 3, 2)
+        with mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+            rect1.display()
+            self.assertEqual(
+                    mock_stdout.getvalue(),
+                    '\n\n   ##\n   ##\n   ##\n'
+                    )
+
+    def test_call_display_with_arg_raise_exception(self):
+        """Test that rectangle display method should receive no argument
+        """
+
+        rect = Rectangle(2, 2)
+        with self.assertRaises(TypeError):
+            rect.display(4)
+
+    def test_rectangle_string_representation(self):
+        """Test rectangle string representation
+        """
+        rect = Rectangle(4, 7, 4, 5, 12)
+        self.assertEqual(str(rect), '[Rectangle] (12) 4/5 - 4/7')
