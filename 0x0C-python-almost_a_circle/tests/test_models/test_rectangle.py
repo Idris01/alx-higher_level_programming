@@ -69,16 +69,21 @@ class RectangleTest(TestCase):
             Rectangle(3)
 
     def test_rectangle_attributes_updated(self):
-        """Test that rectangle width, height and id can be updated
+        """Test that rectangle width, height, x, y and id can be updated
         """
 
         rect = Rectangle(width=7, height=5, id=200)
         self.assertEqual(rect.width, 7)
         self.assertEqual(rect.height, 5)
         self.assertEqual(rect.id, 200)
+        self.assertEqual(rect.x, 0)
+        self.assertEqual(rect.y, 0)
         rect.width = 20
         rect.height = 13
         rect.id = 220
+        rect.x, rect.y = (3, 4)
         self.assertEqual(rect.width, 20)
         self.assertEqual(rect.height, 13)
         self.assertEqual(rect.id, 220)
+        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.y, 4)
