@@ -17,8 +17,8 @@ class RectangleTest(TestCase):
         x, y = (5, 3)
         cls.x = x
         cls.y = y
-        cls.rectangle_from_origin = Rectangle(width, height)
-        cls.rectangle_with_coord = Rectangle(width, height, x, y)
+        cls.rectangle_from_origin = Rectangle(width, height, id=1)
+        cls.rectangle_with_coord = Rectangle(width, height, x, y, id=2)
 
     def test_rect_measurements(self):
         """Test rectangle  width and height are corretly set
