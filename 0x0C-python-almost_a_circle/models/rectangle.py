@@ -116,3 +116,16 @@ class Rectangle(Base):
     def __str__(self):
         return '[Rectangle] ({}) {}/{} - {}/{}'.format(
                 self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args, **kwargs):
+        """Update attribute of a rectangle
+        """
+        attr = ['id', 'width', 'height', 'x', 'y']
+
+        for index, value in enumerate(args[:5]):
+            self.__setattr__(attr[index], value)
+
+        if len(args) == 0:  # run only if args is not empty
+            for key, val in kwargs.items():
+                if key in attr:
+                    self.__setattr__(key, val)

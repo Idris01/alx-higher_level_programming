@@ -229,3 +229,42 @@ class RectangleTest(TestCase):
         """
         rect = Rectangle(4, 7, 4, 5, 12)
         self.assertEqual(str(rect), '[Rectangle] (12) 4/5 - 4/7')
+
+    def test_rectangle_update_with_args(self):
+        """Test that update work as required
+        """
+        rect = Rectangle(10, 4, 3, 7, 20)
+        rect.update(5, 3, 2, 11, 21)
+        self.assertEqual(rect.width, 3)
+        self.assertEqual(rect.height, 2)
+        self.assertEqual(rect.x, 11)
+        self.assertEqual(rect.y, 21)
+        self.assertEqual(rect.id, 5)
+        rect.update(3)
+        self.assertEqual(rect.id, 3)
+        rect.update(3, 7)
+        self.assertEqual(rect.width, 7)
+        rect.update(3, 7, 10)
+        self.assertEqual(rect.height, 10)
+        rect.update(3, 7, 10, 8)
+        self.assertEqual(rect.x, 8)
+
+    def test_rectangle_update_with_kwargs(self):
+        """Test update of rectangle using kwargs
+        """
+        rect = Rectangle(30, 5, 3, 7, 8)
+        rect.update(id=30)
+        self.assertEqual(rect.id, 30)
+        rect.update(id=30, width=35)
+        self.assertEqual(rect.width, 35)
+        rect.update(id=30, width=35, height=70)
+        self.assertEqual(rect.height, 70)
+        rect.update(id=30, width=35, height=70, x=2)
+        self.assertEqual(rect.x, 2)
+        rect.update(id=30, width=35, height=70, x=2, y=50)
+        self.assertEqual(rect.y, 50)
+
+    def test_kwargs_skipped_when_args_present(self):
+        rect = Rectangle(34, 35, id=40)
+        rect.update(77, id=30)
+        self.assertEqual(rect.id, 77)
