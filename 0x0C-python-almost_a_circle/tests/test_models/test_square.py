@@ -43,3 +43,29 @@ class SquareTest(TestCase):
                 str(err.exception),
                 "width must be > 0"
                 )
+
+    def test_square_update_args(self):
+        sqr = Square(5, 7, 3, 22)
+        sqr.update(9)
+        self.assertEqual(sqr.id, 9)
+        sqr.update(9, 4)
+        self.assertEqual(sqr.size, 4)
+        sqr.update(9, 4, 10)
+        self.assertEqual(sqr.x, 10)
+        sqr.update(9, 4, 10, 8)
+        self.assertEqual(sqr.y, 8)
+
+    def test_square_update_kwargs(self):
+        sqr = Square(11, 3, 2, 13)
+        sqr.update(id=20)
+        self.assertEqual(sqr.id, 20)
+        sqr.update(size=21)
+        self.assertEqual(sqr.size, 21)
+        sqr.update(x=7, y=18)
+        self.assertEqual(sqr.x, 7)
+        self.assertEqual(sqr.y, 18)
+
+    def test_square_update_args_over_kwargs(self):
+        sqr = Square(11, 3, 2, 13)
+        sqr.update(25, id=18)
+        self.assertEqual(sqr.id, 25)
