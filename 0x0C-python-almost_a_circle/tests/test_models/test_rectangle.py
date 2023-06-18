@@ -280,5 +280,10 @@ class RectangleTest(TestCase):
                 rect.to_dictionary()
                 )
 
+        self.assertEqual(
+                type(rect.to_dictionary()),
+                dict
+                )
+
         with self.assertRaises(TypeError):
             rect.to_dictionary(5)
