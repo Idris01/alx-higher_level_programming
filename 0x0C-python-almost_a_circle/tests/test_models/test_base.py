@@ -66,3 +66,18 @@ class BaseTest(TestCase):
                 mock_stdout.getvalue(),
                 '[{"id": 40, "x": 5}]\n'
                 )
+
+    def test_from_json_string(self):
+        json_str = '[{"x": 2, "y": 7, "size": 9}]'
+        list_of_dict = Base.from_json_string(json_str)
+
+        self.assertEqual(type(list_of_dict), list)
+        self.assertEqual(list_of_dict[0]["x"], 2)
+        self.assertEqual(
+                Base.from_json_string(None),
+                []
+                )
+        self.assertEqual(
+                Base.from_json_string([]),
+                []
+                )

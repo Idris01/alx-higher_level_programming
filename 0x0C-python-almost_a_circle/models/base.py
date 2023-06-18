@@ -69,3 +69,19 @@ class Base:
 
         with open(name, 'w', encoding="utf-8") as f:
             f.write(cls.to_json_string(list_dict))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Convert from json to python list type
+
+        Args:
+            json_string (str): json string representation
+
+        Returns:
+            list of python dictionary
+        """
+
+        if json_string is None or not json_string:
+            return []
+
+        return json.loads(json_string)
