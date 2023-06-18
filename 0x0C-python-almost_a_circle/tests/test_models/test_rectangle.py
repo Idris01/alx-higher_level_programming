@@ -268,3 +268,17 @@ class RectangleTest(TestCase):
         rect = Rectangle(34, 35, id=40)
         rect.update(77, id=30)
         self.assertEqual(rect.id, 77)
+
+    def test_rectangle_to_dict(self):
+        rect = Rectangle(34, 35, id=40)
+        rect_dict = {
+                'width': 34, 'height': 35,
+                'x': 0, 'y': 0, 'id': 40
+                }
+        self.assertEqual(
+                rect_dict,
+                rect.to_dictionary()
+                )
+
+        with self.assertRaises(TypeError):
+            rect.to_dictionary(5)

@@ -129,3 +129,11 @@ class Rectangle(Base):
             for key, val in kwargs.items():
                 if key in attr:
                     self.__setattr__(key, val)
+
+    def to_dictionary(self):
+        """Return a dictionary of rectangle attributes
+        """
+
+        attr_map = self.__dict__
+
+        return {key.split('_')[-1]: val for key, val in attr_map.items()}
