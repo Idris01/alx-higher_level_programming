@@ -2,6 +2,7 @@
 """This module define the Base class
 """
 
+import os
 import json
 
 
@@ -97,7 +98,7 @@ class Base:
 
         """
 
-        if type(cls).__name__ != 'Base':
+        if cls.__name__ != 'Base':
             new_obj = cls(2, 3)
         else:
             new_obj = cls()
@@ -105,3 +106,23 @@ class Base:
         new_obj.update(**dictionary)
 
         return new_obj
+
+    @classmethod
+    def load_from_file(cls):
+        """Load list of instances of class from file
+
+        The file name is of form <classname>.json in the current
+        dirrectory
+
+        Returns:
+            list of instances
+
+        """
+        file_name = f"{cls.__name__}.json"
+        if not os.path.exists(file_name):
+            return []
+
+        with open(file_name, 'r', encoding="utf-8") as stream:
+            dict_list = cls.from_json_string(stream.read())
+
+        return [cls.create(**attr) for attr in dict_list]
