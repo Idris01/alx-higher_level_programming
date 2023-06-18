@@ -56,3 +56,17 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 if key in attr:
                     self.__setattr__(key, value)
+
+    def to_dictionary(self):
+        """Return a dictionary of square attributes
+        """
+
+        attr_list = ['id', 'size', 'x', 'y']
+        attr_map = self.__dict__
+
+        attr = {key.split('_')[-1]: val for key, val in attr_map.items()}
+
+        return {
+                key: val for key, val
+                in attr.items() if key in attr_list
+                }

@@ -69,3 +69,22 @@ class SquareTest(TestCase):
         sqr = Square(11, 3, 2, 13)
         sqr.update(25, id=18)
         self.assertEqual(sqr.id, 25)
+
+    def test_square_to_dict(self):
+        sqr = Square(34, 3, 7, id=40)
+        sqr_dict = {
+                'size': 34, 'x': 3, 'y': 7, 'id': 40
+                }
+
+        self.assertEqual(
+                sqr_dict,
+                sqr.to_dictionary()
+                )
+
+        self.assertEqual(
+                type(sqr.to_dictionary()),
+                dict
+                )
+
+        with self.assertRaises(TypeError):
+            sqr.to_dictionary(5)
