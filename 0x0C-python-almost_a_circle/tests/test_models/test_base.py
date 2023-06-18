@@ -2,6 +2,8 @@
 """This module define test for the Base class
 """
 
+import io
+import unittest.mock as mock
 from unittest import TestCase
 from models.base import Base
 
@@ -50,3 +52,17 @@ class BaseTest(TestCase):
 
         base_id_str = Base("id")
         self.assertEqual(base_id_str.id, "id")
+
+    def test_to_json_string_static_method(self):
+        list_dict = [{'id': 40, 'x': 5}]
+
+        json_str = Base.to_json_string(list_dict)
+
+        self.assertEqual(type(json_str), str)
+
+        with mock.patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
+            print(json_str)
+            self.assertEqual(
+                mock_stdout.getvalue(),
+                '[{"id": 40, "x": 5}]\n'
+                )
