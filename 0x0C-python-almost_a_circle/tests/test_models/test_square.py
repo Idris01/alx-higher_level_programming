@@ -88,3 +88,11 @@ class SquareTest(TestCase):
 
         with self.assertRaises(TypeError):
             sqr.to_dictionary(5)
+
+    def test_square_create(self):
+        sqr = Square(3, 4, 7, 8)
+        sqr_dict = sqr.to_dictionary()
+        sqr2 = sqr.create(**sqr_dict)
+        sqr2_dict = sqr2.to_dictionary()
+
+        self.assertEqual(sqr_dict, sqr2_dict)

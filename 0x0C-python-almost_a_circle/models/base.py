@@ -85,3 +85,23 @@ class Base:
             return []
 
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Create a new instance from dictionary
+
+        Args:
+            dictionary (dict): attrubutes of new object
+        Returns:
+            newly created instance of cls
+
+        """
+
+        if type(cls).__name__ != 'Base':
+            new_obj = cls(2, 3)
+        else:
+            new_obj = cls()
+
+        new_obj.update(**dictionary)
+
+        return new_obj

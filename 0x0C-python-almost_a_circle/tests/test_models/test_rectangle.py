@@ -287,3 +287,11 @@ class RectangleTest(TestCase):
 
         with self.assertRaises(TypeError):
             rect.to_dictionary(5)
+
+    def test_create_classmethod(self):
+        rect = Rectangle(3, 4, 7, 8)
+        rect_dict = rect.to_dictionary()
+        rect2 = rect.create(**rect_dict)
+        rect2_dict = rect2.to_dictionary()
+
+        self.assertEqual(rect_dict, rect2_dict)
