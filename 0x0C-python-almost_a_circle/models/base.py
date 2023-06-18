@@ -126,3 +126,25 @@ class Base:
             dict_list = cls.from_json_string(stream.read())
 
         return [cls.create(**attr) for attr in dict_list]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Save attributes of objects to file in csv format
+
+        Args:
+            list_objs (list): list of objects
+
+        """
+        name = cls.__name__
+        file_name = "{}.csv".format(name)
+        
+        if name == 'Square':
+            attr_list = ['id', 'size', 'x', 'y']
+        elif name == 'Rectangle':
+            attr_list = ['id', 'width', 'height', 'x', 'y']
+        
+        with open(file_name, 'w', encoding="utf-8") as f:
+            for obj in list_objs:
+                attr = obj.to_dictionary()
+                attr_vals = [str(attr[indx]) for indx in attr_list]
+                f.write(f"{','.join(attr_vals)}\n")
