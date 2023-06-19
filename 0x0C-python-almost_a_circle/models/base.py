@@ -137,14 +137,49 @@ class Base:
         """
         name = cls.__name__
         file_name = "{}.csv".format(name)
-        
+
         if name == 'Square':
             attr_list = ['id', 'size', 'x', 'y']
         elif name == 'Rectangle':
             attr_list = ['id', 'width', 'height', 'x', 'y']
-        
+
         with open(file_name, 'w', encoding="utf-8") as f:
-            for obj in list_objs:
+            size = len(list_objs)
+
+            for index, obj in enumerate(list_objs):
                 attr = obj.to_dictionary()
                 attr_vals = [str(attr[indx]) for indx in attr_list]
-                f.write(f"{','.join(attr_vals)}\n")
+                if index == size - 1:
+                    f.write(f"{','.join(attr_vals)}")
+                else:
+                    f.write(f"{','.join(attr_vals)}\n")
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load instances of class from file into a list
+        """
+
+        file_name = "{}.csv".format(cls.__name__)
+
+        if not os.path.exists(file_name):
+            return []
+
+        new_list = []
+
+        with open(file_name, 'r', encoding="utf-8") as f:
+
+            line = f.readline()
+            while line != '':
+                data = [int(val) for val in line.split(',')]
+
+                if cls.__name__ == 'Base':
+                    new_obj = cls()  # dummy object of Base class
+                else:
+                    new_obj = cls(1, 2)  # dummy object of other class
+
+                new_obj.update(*data)  # set correct object data
+                new_list.append(new_obj)  # add object to list
+
+                line = f.readline()  # read next line in file
+
+        return new_list
