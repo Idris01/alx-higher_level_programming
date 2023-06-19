@@ -227,10 +227,10 @@ class Base:
           max_height = height
         _draw(pen, width, height)
         next_start += width + (width / 2)
-        start_point -= width
         pen.forward(next_start)
 
     if list_squares:
+      pen.goto(0, 0)
       pen.forward(start_point)
       pen.left(-90)
       pen.forward(max_height * 2)
@@ -243,3 +243,4 @@ class Base:
         _draw(pen, width, height, color='green')
         next_start += width + width / 2
         pen.forward(next_start)
+    screen.exitonclick()
