@@ -18,5 +18,5 @@ else {
     !newList.includes(item) && newList.push(item);
   }
   // all numbers in the list are equal
-  if (newList.length === 1) console.log(0);
+  if (newList.length === 1) console.log(newList[0]);
 }
