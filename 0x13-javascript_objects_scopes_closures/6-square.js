@@ -7,9 +7,9 @@ class Square extends InitialSquare {
     if (!myChar) {
       myChar = 'X';
     }
-    if (this.width) {
+    if (this.width && this.height) {
       const line = Buffer.alloc(this.width, myChar).toString();
-      for (let i = 0; i < this.width; i++) {
+      for (let i = 0; i < this.height; i++) {
         console.log(line);
       }
     }
