@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""This module takse a url and an email, then
-send a post request to the url with the email
+"""This module takes a url and send a get request then print the
+response body while handling possilbe HTTPErrors
 """
 
 if __name__ == "__main__":
@@ -10,13 +10,9 @@ if __name__ == "__main__":
     import sys
 
     url = sys.argv[1]
-    email = sys.argv[2]
-    data = parse.urlencode(
-            {'email': email}).encode('utf-8')
-    post_request = req.Request(url, data)
 
     try:
-        with req.urlopen(post_request) as resp:
+        with req.urlopen(url) as resp:
             print(resp.read().decode('utf-8'))
     except HTTPError as e:
         print(f"Error code: {e.code}")
