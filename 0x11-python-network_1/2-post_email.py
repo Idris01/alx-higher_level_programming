@@ -3,10 +3,16 @@
 send a post request to the url with the email
 """
 
-__name__ == "__main__":
+if __name__ == "__main__":
     import urllib.request as req
+    import urllib.parse as parse
     import sys
 
     url = sys.argv[1]
     email = sys.argv[2]
-    data
+    data = parse.urlencode(
+            {'email': email}).encode('utf-8')
+    post_request = req.Request(url, data)
+
+    with req.urlopen(post_request) as resp:
+        print(resp.read().decode('utf-8'))
