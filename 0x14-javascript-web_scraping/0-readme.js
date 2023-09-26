@@ -1,13 +1,11 @@
 #!/usr/bin/node
-const fs = require('node:fs/promises');
+const fs = require('fs');
 const path = process.argv[2];
 
-(async () => {
-  try {
-    const file = await fs.open(path, 'r');
-    const data = await file.read(encoding="utf-8");
-    console.log(data.buffer.toString());
-  } catch (error) {
+fs.readFile(path, 'utf-8', (error, data) => {
+  if (error) {
     console.log(error);
+  } else {
+    console.log(data);
   }
-})();
+});
